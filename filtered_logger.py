@@ -82,10 +82,8 @@ def main() -> None:
     logger = get_logger()
     cursor = db.cursor()
     cursor.execute("SELECT * FROM users")
-    # Use a generator expression to avoid loading all rows in memory
     rows = (row for row in cursor)
     for row in rows:
-        # Use f-strings for better readability and performance
         msg = f"name={row[0]}; email={row[1]}; phone={row[2]}; ssn={row[3]}; password={row[4]}; ip={row[5]}; last_login={row[6]}; user_agent={row[7]};"
         logger.info(msg)
     cursor.close()
