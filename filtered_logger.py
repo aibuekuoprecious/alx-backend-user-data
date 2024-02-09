@@ -35,7 +35,7 @@ class RedactingFormatter(logging.Formatter):
 
     def __init__(self, fields: List[str]):
         """
-        Instantiation method, sets fields for each instance
+        Sets fields for each instance
         """
         super(RedactingFormatter, self).__init__(self.FORMAT)
         self.fields = fields
