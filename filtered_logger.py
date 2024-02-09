@@ -18,9 +18,8 @@ def filter_datum(
     message: str, separator: str
 ) -> str:
     """
-    Filters message by replacing each value in fields with redaction
+    Filters message by using redaction
     """
-    # Use a compiled regex pattern for faster substitution
     pattern = re.compile(
         r'({0}=)[^{1}]*({1})'.format('|'.join(fields), separator)
     )
@@ -64,7 +63,7 @@ def get_logger() -> logging.Logger:
 
 def get_db() -> mysql.connector.connection.MySQLConnection:
     """
-    Connects to a mysql database
+    Connects to mysql database
     """
     connector = mysql.connector.connect(
         host=os.getenv('PERSONAL_DATA_DB_HOST'),
