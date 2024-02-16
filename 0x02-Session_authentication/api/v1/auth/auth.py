@@ -35,13 +35,12 @@ class Auth:
             return False
 
         for excluded_path in excluded_paths:
-            if excluded_path.startswith(path):
+            if (
+                excluded_path.startswith(path)
+                or path.startswith(excluded_path)
+                or (excluded_path[-1] == "*" and path.startswith(excluded_path[:-1]))
+            ):
                 return False
-            elif path.startswith(excluded_path):
-                return False
-            elif excluded_path[-1] == "*":
-                if path.startswith(excluded_path[:-1]):
-                    return False
 
         return True
 

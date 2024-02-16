@@ -47,8 +47,7 @@ class User(Base):
         if new_password is None or type(new_password) is not str:
             self._password = None
         else:
-            self._password = hashlib.sha256(
-                new_password.encode()).hexdigest().lower()
+            self._password = hashlib.sha256(new_password.encode()).hexdigest().lower()
 
     def is_valid_password(self, password: str) -> bool:
         """Validate a password.
@@ -72,8 +71,7 @@ class User(Base):
         Returns:
             str: The display name of the user.
         """
-        if self.email is None and self.first_name is None \
-                and self.last_name is None:
+        if self.email is None and self.first_name is None and self.last_name is None:
             return ""
         if self.first_name is None and self.last_name is None:
             return "{}".format(self.email)

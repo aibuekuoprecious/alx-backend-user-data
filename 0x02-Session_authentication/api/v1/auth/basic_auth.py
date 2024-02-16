@@ -78,9 +78,7 @@ class BasicAuth(Auth):
         email, password = decoded_header.split(":")
         return (email, password)
 
-    def user_object_from_credentials(
-        self, email: str, password: str
-    ) -> TypeVar("User"):
+    def user_object_from_credentials(self, email: str, password: str) -> TypeVar("User"):
         """
         Retrieves the user object based on the given email and password
 
