@@ -9,19 +9,10 @@ from flask import request
 
 
 class Auth:
-    """_summary_
-    """
+    """Class for authentication"""
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """_summary_
-
-        Args:
-                path (str): _description_
-                excluded_paths (List[str]): _description_
-
-        Returns:
-                bool: _description_
-        """
+        """Check if authentication is required for a given path"""
         if path is None:
             return True
 
@@ -43,17 +34,10 @@ class Auth:
         return True
 
     def authorization_header(self, request=None) -> str:
-        """_summary_
-
-        Args:
-                request (_type_, optional): _description_. Defaults to None.
-
-        Returns:
-                str: _description_
-        """
+        """Get the authorization header from the request"""
         if request is None:
             return None
-        # get header from the request
+
         header = request.headers.get('Authorization')
 
         if header is None:
@@ -62,7 +46,5 @@ class Auth:
         return header
 
     def current_user(self, request=None) -> TypeVar('User'):
-        """_summary_
-        """
-
+        """Get the current user"""
         return None
