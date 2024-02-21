@@ -62,7 +62,8 @@ class Auth:
             return None
 
         session_id = _generate_uuid()
-        self._db.update_user_session_id(user.id, session_id)
+        user.session_id = session_id
+        self._db.commit()
         return session_id
 
     def get_user_from_session_id(self, session_id: str) -> User:
