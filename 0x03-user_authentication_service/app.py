@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-This module implements a user authentication service using Flask.
+User authentication service module using Flask.
 """
 
 from flask import Flask, jsonify, request, abort, redirect
@@ -14,7 +14,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def index() -> str:
     """
-    This route handles the root endpoint and returns a welcome message.
+    This route handles the root endpoint.
 
     Returns:
         str: A JSON response with a welcome message.
