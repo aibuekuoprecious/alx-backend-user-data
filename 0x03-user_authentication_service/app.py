@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'])
-def index() -> str:
+def root() -> str:
     """This route handles the root endpoint.
     """
     return jsonify({"message": "Bienvenue"})
