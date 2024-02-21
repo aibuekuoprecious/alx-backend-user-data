@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Auth class to interact with the authentication database"""
+"""Auth module to interact with the authentication database"""
 
 
 import bcrypt
