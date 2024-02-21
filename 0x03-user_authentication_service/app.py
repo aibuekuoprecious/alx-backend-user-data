@@ -33,7 +33,6 @@ def users() -> Response:
 
 
 @app.route('/sessions', methods=['POST'])
-@app.route('/login', methods=['POST'])
 def login() -> str:
     """This route handles user login and session creation.
     """
