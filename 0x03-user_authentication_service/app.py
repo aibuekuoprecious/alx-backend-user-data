@@ -2,7 +2,8 @@
 """User authentication service module using Flask.
 """
 
-from flask import Flask, jsonify, request, abort, redirect
+from flask import Flask, jsonify, request, abort, redirect, Response
+
 from auth import Auth
 
 AUTH = Auth()
@@ -18,7 +19,7 @@ def root() -> str:
 
 
 @app.route('/users', methods=['POST'])
-def users() -> str:
+def users() -> Response:
     """This route handles the creation of new users.
     """
     email = request.form.get('email')
