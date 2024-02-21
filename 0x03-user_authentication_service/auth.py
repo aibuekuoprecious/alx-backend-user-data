@@ -80,8 +80,9 @@ class Auth:
     def destroy_session(self, user_id: int) -> None:
         """Destroy the session for the user with the given user ID.
         """
-        user = self._db.find_user_by(user_id)
+        user = self._db.find_user_by(user_id).session_id
         user.session_id = None
+        return None
 
     def get_reset_password_token(self, email: str) -> str:
         """Get the reset password token for the user with the given email.
