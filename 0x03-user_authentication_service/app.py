@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-This module implements a user authentication service using Flask.
+User authentication service module using Flask.
 """
 
 from flask import Flask, jsonify, request, abort, redirect
