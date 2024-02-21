@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-User authentication service module using Flask.
+"""User authentication service module using Flask.
 """
 
 from flask import Flask, jsonify, request, abort, redirect
@@ -13,22 +12,14 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index() -> str:
-    """
-    This route handles the root endpoint.
-
-    Returns:
-        str: A JSON response with a welcome message.
+    """This route handles the root endpoint.
     """
     return jsonify({"message": "Bienvenue"})
 
 
 @app.route('/users', methods=['POST'])
 def users() -> str:
-    """
-    This route handles the creation of new users.
-
-    Returns:
-        str: A JSON response with the created user's email and a success message.
+    """This route handles the creation of new users.
     """
     email = request.form.get('email')
     password = request.form.get('password')
@@ -43,18 +34,13 @@ def users() -> str:
 @app.route('/sessions', methods=['POST'])
 @app.route('/login', methods=['POST'])
 def login() -> str:
-    """
-    This route handles user login and session creation.
-
-    Returns:
-        str: A JSON response with the logged-in user's email and a success message.
+    """This route handles user login and session creation.
     """
     email = request.form.get('email')
     password = request.form.get('password')
 
     user = AUTH.valid_login(email, password)
     if user:
-        # Create a new session
         session_id = AUTH.create_session(user.id)
         response = jsonify({"email": user.email, "message": "Logged in"})
         response.set_cookie('session_id', session_id)
@@ -65,11 +51,7 @@ def login() -> str:
 
 @app.route('/sessions', methods=['DELETE'])
 def logout() -> str:
-    """
-    This route handles user logout and session destruction.
-
-    Returns:
-        str: A redirect response to the root endpoint.
+    """This route handles user logout and session destruction.
     """
     session_id = request.cookies.get('session_id')
     user = AUTH.get_user_from_session_id(session_id)
@@ -83,11 +65,7 @@ def logout() -> str:
 
 @app.route('/profile', methods=['GET'])
 def profile() -> str:
-    """
-    This route handles retrieving the user's profile information.
-
-    Returns:
-        str: A JSON response with the user's email.
+    """This route handles retrieving the user's profile information.
     """
     session_id = request.cookies.get('session_id')
     user = AUTH.get_user_from_session_id(session_id)
@@ -99,11 +77,7 @@ def profile() -> str:
 
 @app.route('/reset_password', methods=['POST'])
 def get_reset_password_token() -> str:
-    """
-    This route handles generating a reset password token for a user.
-
-    Returns:
-        str: A JSON response with the user's email and the reset password token.
+    """This route handles generating a reset password token for a user.
     """
     email = request.form.get('email')
     try:
@@ -115,11 +89,7 @@ def get_reset_password_token() -> str:
 
 @app.route('/reset_password', methods=['PUT'])
 def update_password() -> str:
-    """
-    This route handles updating the user's password using a reset password token.
-
-    Returns:
-        str: A JSON response with the user's email and a success message.
+    """This route handles updating the user's password using a reset password token.
     """
     email = request.form.get('email')
     reset_token = request.form.get('reset_token')
