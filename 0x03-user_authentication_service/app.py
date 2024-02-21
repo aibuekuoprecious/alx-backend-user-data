@@ -14,7 +14,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def index() -> str:
     """
-    This route handles the root endpoint and returns a welcome message.
+    This route handles the root endpoint.
 
     Returns:
         str: A JSON response with a welcome message.
